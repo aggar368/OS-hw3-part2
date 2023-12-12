@@ -59,7 +59,8 @@ void Alarm::CallBack() {
     } 
     else {			// there's someone to preempt
 	if(kernel->scheduler->getSchedulerType() == RR){        
-	    interrupt->YieldOnReturn();
+	    cout << "yield to next one" << endl;
+        interrupt->YieldOnReturn();
 	}
     }
 }
