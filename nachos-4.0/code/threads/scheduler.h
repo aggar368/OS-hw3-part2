@@ -44,6 +44,7 @@ class Scheduler {
         void setSchedulerType(SchedulerType t) {schedulerType = t;}
     
     // SelfTest for scheduler is implemented in class Thread
+	bool startThread = false;
     
   private:
 	SchedulerType schedulerType;

@@ -180,8 +180,7 @@ Thread::Finish ()
     
     DEBUG(dbgThread, "Finishing thread: " << name);
     cout << name << " finished" << endl;
-    kernel->interrupt->startThread = true;  // indicate that we have started a new thread
-                                            // do not let alarm interrupt yield to another one when scheduler is RR
+    kernel->scheduler->startThread = true;  // will start a new thread
     
     Sleep(TRUE);				// invokes SWITCH
     // not reached

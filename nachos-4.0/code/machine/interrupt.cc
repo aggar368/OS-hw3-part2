@@ -167,19 +167,11 @@ Interrupt::OneTick()
     CheckIfDue(FALSE);		// check for pending interrupts
     ChangeLevel(IntOff, IntOn);	// re-enable interrupts
     if (yieldOnReturn) {	// if the timer device handler asked 
-    				        // for a context switch, ok to do it now
-        if (startThread)  // just start a new thread due to finishing of old thread
-        {
-            startThread = false;
-            yieldOnReturn = FALSE;
-        }
-        else
-        {
-            yieldOnReturn = FALSE;
-            status = SystemMode;		// yield is a kernel routine
-            kernel->currentThread->Yield();
-            status = oldStatus;
-        }        	
+    				        // for a context switch, ok to do it now        
+        yieldOnReturn = FALSE;
+        status = SystemMode;		// yield is a kernel routine
+        kernel->currentThread->Yield();
+        status = oldStatus;             	
     }
 }
 

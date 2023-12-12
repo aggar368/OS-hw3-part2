@@ -119,8 +119,7 @@ class Interrupt {
 				// at time "when".  This is called
     				// by the hardware device simulators.
     
-    void OneTick();       	// Advance simulated time
-    bool startThread = false;
+    void OneTick();       	// Advance simulated time    
 
   private:
     IntStatus level;		// are interrupts enabled or disabled?

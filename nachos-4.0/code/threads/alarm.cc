@@ -59,8 +59,16 @@ void Alarm::CallBack() {
     } 
     else {			// there's someone to preempt
 	if(kernel->scheduler->getSchedulerType() == RR){        
-	    cout << "yield to next one" << endl;
-        interrupt->YieldOnReturn();
+	    cout << "check if yielding to next one" << endl;
+        if (kernel->scheduler->startThread)  // just started a new thread, do not yield to another one
+        {
+            kernel->scheduler->startThread = false;
+            cout << "no yield" << endl;
+        }
+        else
+        {
+            interrupt->YieldOnReturn();
+        }        
 	}
     }
 }
