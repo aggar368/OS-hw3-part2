@@ -120,6 +120,7 @@ class Interrupt {
     				// by the hardware device simulators.
     
     void OneTick();       	// Advance simulated time
+    bool startThread = false;
 
   private:
     IntStatus level;		// are interrupts enabled or disabled?
