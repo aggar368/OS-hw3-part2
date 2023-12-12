@@ -453,6 +453,7 @@ void
 threadBody() {
     Thread *thread = kernel->currentThread;
     while (thread->getBurstTime() > 0) {
+        kernel->scheduler->startThread = false;  // thread successfully started
         thread->setBurstTime(thread->getBurstTime() - 1);
         kernel->interrupt->OneTick();
 	    cout << kernel->currentThread->getName() << ": remaining " << kernel->currentThread->getBurstTime() <<endl;
