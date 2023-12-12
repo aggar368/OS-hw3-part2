@@ -151,6 +151,7 @@ Thread::Begin ()
 {
     ASSERT(this == kernel->currentThread);
     DEBUG(dbgThread, "Beginning thread: " << name);
+    cout << name << " started" << endl;
     
     kernel->scheduler->CheckToBeDestroyed();
     kernel->interrupt->Enable();
@@ -178,6 +179,7 @@ Thread::Finish ()
     ASSERT(this == kernel->currentThread);
     
     DEBUG(dbgThread, "Finishing thread: " << name);
+    cout << name << " finished" << endl;
     
     Sleep(TRUE);				// invokes SWITCH
     // not reached
